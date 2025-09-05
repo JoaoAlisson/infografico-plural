@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Transformação Financeira Plural Med</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 text-center mb-2;
+        }
+        .section-subtitle {
+            @apply text-lg text-gray-500 text-center mb-12;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center h-full;
+        }
+        .icon-container {
+            @apply mb-4 flex-shrink-0;
+        }
+        .icon-svg {
+            @apply w-12 h-12;
+        }
+        .card-title {
+            @apply text-lg font-semibold text-gray-800 mb-2;
+        }
+        .card-text {
+            @apply text-gray-600 text-sm;
+        }
+
+        /* Estilos para Impressão (PDF) */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .shadow-lg, .shadow-xl, .shadow-2xl, .shadow {
+                box-shadow: none !important;
+                border: 1px solid #ddd;
+            }
+            .rounded-xl, .rounded-2xl {
+                border-radius: 0 !important;
+            }
+            header, section, footer, div {
+                page-break-inside: avoid;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 tracking-tight">
+                Transformação Financeira Plural Med
+            </h1>
+            <p class="text-sm text-gray-400 mt-4">Reunião de Planejamento | 04 de Setembro de 2025</p>
+        </header>
+
+        <!-- Seção 1: O Grande Objetivo -->
+        <section class="max-w-4xl mx-auto text-center mb-20">
+             <h2 class="text-2xl font-bold text-gray-800 mb-4">O Grande Objetivo</h2>
+             <div class="bg-white p-8 rounded-xl shadow-xl border border-blue-100 inline-flex items-center gap-6">
+                <div class="icon-container text-green-500">
+                    <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                </div>
+                <p class="text-xl text-gray-700 font-semibold text-left">
+                    Acelerar a automação da DRE Gerencial e DFC <br> para tomadas de decisão estratégicas.
+                </p>
+                <div class="icon-container text-blue-500">
+                     <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+             </div>
+        </section>
+
+        <!-- Seção 5: Objetivos Gerais -->
+        <section class="mb-20">
+             <h2 class="section-title">Objetivos Gerais e Requisitos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow border"><svg class="w-7 h-7 text-green-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" /></svg><div><h4 class="font-bold text-gray-800">DRE e DFC Gerenciais Automatizadas</h4><p class="text-gray-600 text-sm">Eliminar relatórios estáticos e ter visão em tempo real.</p></div></div>
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow border"><svg class="w-7 h-7 text-green-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v3.75a3 3 0 0 1-3 3m-13.5 0v3.75a3 3 0 0 0 3 3h6.75a3 3 0 0 0 3-3v-3.75" /></svg><div><h4 class="font-bold text-gray-800">Um Único Local para Input</h4><p class="text-gray-600 text-sm">Sankhya como sistema central para todos os dados.</p></div></div>
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow border"><svg class="w-7 h-7 text-green-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg><div><h4 class="font-bold text-gray-800">Padronização e Qualificação de Dados</h4><p class="text-gray-600 text-sm">Revisar e corrigir dados existentes, especialmente nos contratos.</p></div></div>
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow border"><svg class="w-7 h-7 text-green-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" /></svg><div><h4 class="font-bold text-gray-800">Não Usar Planilhas</h4><p class="text-gray-600 text-sm">Eliminar o uso de planilhas para cálculos e consolidação.</p></div></div>
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow border"><svg class="w-7 h-7 text-green-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg><div><h4 class="font-bold text-gray-800">Definir Fluxos de Processos</h4><p class="text-gray-600 text-sm">Estruturar o lançamento de gastos e outros processos financeiros.</p></div></div>
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow border"><svg class="w-7 h-7 text-green-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg><div><h4 class="font-bold text-gray-800">Atualização do Plano de Contas</h4><p class="text-gray-600 text-sm">Melhorar a classificação de custos e despesas.</p></div></div>
+            </div>
+        </section>
+
+        <!-- Seção 2 e 3: Antes e Depois -->
+        <section class="mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                <!-- Coluna: Como é Hoje -->
+                <div class="bg-red-50/50 p-6 md:p-8 rounded-2xl border-2 border-dashed border-red-200">
+                    <h3 class="text-2xl font-bold text-red-800 text-center mb-6">Como é Hoje: Os Desafios a Superar</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="text-red-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                            <div><h4 class="font-semibold text-red-900">DRE e DFC Estáticas</h4><p class="text-sm text-red-700">Relatórios desatualizados por falta de automação.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-red-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M3 10h18M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"></path></svg></div>
+                            <div><h4 class="font-semibold text-red-900">Input Manual em Múltiplos Sistemas</h4><p class="text-sm text-red-700">Lançamentos repetitivos em Sankhya, Vitus, Fortes, OMIE e planilhas.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-red-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg></div>
+                            <div><h4 class="font-semibold text-red-900">Dados Inconsistentes e Errados</h4><p class="text-sm text-red-700">Contratos, receitas e despesas classificados incorretamente.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-red-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
+                            <div><h4 class="font-semibold text-red-900">Excesso de Planilhas</h4><p class="text-sm text-red-700">Cálculos manuais de impostos e consolidações.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-red-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg></div>
+                            <div><h4 class="font-semibold text-red-900">"Caos" no Endividamento</h4><p class="text-sm text-red-700">Falta de visibilidade e empréstimos inesperados.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna: Como Deve Ser -->
+                <div class="bg-green-50/50 p-6 md:p-8 rounded-2xl border-2 border-dashed border-green-200">
+                    <h3 class="text-2xl font-bold text-green-800 text-center mb-6">Como Deve Ser: Rumo à Eficiência</h3>
+                     <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="text-green-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9"></path></svg></div>
+                            <div><h4 class="font-semibold text-green-900">Sankhya como Centro</h4><p class="text-sm text-green-700">Sistema único para input de todos os dados financeiros.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-green-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                            <div><h4 class="font-semibold text-green-900">DRE e DFC Automatizadas</h4><p class="text-sm text-green-700">Visão gerencial em tempo real para decisões ágeis.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-green-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                            <div><h4 class="font-semibold text-green-900">Dados Padronizados e Qualificados</h4><p class="text-sm text-green-700">Revisão e correção de cadastros para garantir consistência.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-green-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg></div>
+                            <div><h4 class="font-semibold text-green-900">Fluxos de Processo Definidos</h4><p class="text-sm text-green-700">Clareza e padronização para todas as áreas financeiras.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-green-500 mt-1 flex-shrink-0"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A2.625 2.625 0 0 1 1.5 18.375V7.5c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v10.875c0 1.035-.84 1.875-1.875 1.875h-2.25a.625.625 0 0 0-.625.625v-1.938l-4.5-3.25-4.5 3.25v1.938a.625.625 0 0 0-.625-.625h-2.25Z" /></svg></div>
+                            <div><h4 class="font-semibold text-green-900">Eliminação de Planilhas</h4><p class="text-sm text-green-700">Substituição total por sistemas integrados e inteligentes.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Detalhamento da Transformação -->
+        <section class="mb-20">
+            <p class="section-subtitle">O plano de ação detalhado para cada área.</p>
+            <div class="space-y-8 max-w-5xl mx-auto">
+                <!-- Process Cards -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        1. Contratos
+                    </h3>
+                    <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">O Setor de Contratos de Receita realizará o input de informações somente no Sankhya.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                        <li><strong>Vitória:</strong> Acompanhar entrega e conferência dos contratos (sanitização de dados existentes). <span class="font-semibold text-blue-600 ml-1">[Prazo: 2 dias]</span></li>
+                        <li><strong>Lucas:</strong> Montar a visualização da DRE gerencial no Sankhya.</li>
+                        <li><strong>Setor de Contratos:</strong> Cadastrar contratos de endividamento no Sankhya.</li>
+                        <li><strong>Setor de Contratos, CFO + CEO:</strong> Lançamento de investimentos no Sankhya.</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        2. Receita
+                    </h3>
+                     <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">Daiany, Rosana, IEP, CEPM e analistas continuarão recebendo informações do NAC, mas lançarão diretamente no Sankhya.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                        <li>Configurar o Sankhya para emissão de notas fiscais (depende da entrada do módulo fiscal).</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                        3. Imposto
+                    </h3>
+                     <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">Utilizar um sistema de cálculo de imposto para cálculos trimestrais.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                         <li><strong>Felipe F, Gisele e Daiany:</strong> Criar o sistema no Lovable. <span class="font-semibold text-blue-600 ml-1">[Prazo: 5 dias]</span></li>
+                    </ul>
+                </div>
+
+                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        4. Custo de Serviço Prestado
+                    </h3>
+                     <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">Manter o fluxo atual no Sankhya (Compras, RH, ADM), mas com a integração do Fluxo de Gastos.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                        <li><strong>Lucas, Suelly:</strong> Criar o Fluxo de Gastos. <span class="font-semibold text-blue-600 ml-1">[Prazo: 3 dias]</span></li>
+                        <li><strong>Thiago:</strong> Realizar a auditoria dos lançamentos financeiros. <span class="font-semibold text-blue-600 ml-1">[Prazo: 3 dias]</span></li>
+                        <li><strong>Lucas:</strong> Atualizar o Plano de Contas (Custo e Despesa). <span class="font-semibold text-blue-600 ml-1">[Prazo: 2 dias]</span></li>
+                    </ul>
+                </div>
+                
+                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18h16.5M5.25 6H18m-12.75 0h12.75m-12.75 0V21m12.75-15V21m-12.75 0h12.75M5.25 6V3.75a2.25 2.25 0 0 1 2.25-2.25h6.75a2.25 2.25 0 0 1 2.25 2.25V6m-12.75 0h12.75" /></svg>
+                        5. Gastos Administrativos
+                    </h3>
+                     <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">Centralizar o fluxo de gastos no Sankhya, incluindo a integração da folha de pagamento.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                        <li><strong>Giovanni, Wesley:</strong> Definir o fluxo de lançamentos e solicitação para despesas administrativas.</li>
+                        <li><strong>Lucas, Suelly:</strong> Criar campo de previsão no Sankhya para pagamento anual de gastos. <span class="font-semibold text-blue-600 ml-1">[Prazo: 3 dias]</span></li>
+                        <li>Integrar folha de pagamento (Fortes e OMIE) com o Sankhya.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75-.75v-.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+                        6. Endividamento
+                    </h3>
+                     <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">Setor de Contratos lançará os contratos no Sankhya, e o Financeiro atualizará as parcelas mensais para sair do "caos" atual.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                        <li><strong>Vitória, Suelly:</strong> Cadastrar os contratos de endividamento no Sankhya. <span class="font-semibold text-blue-600 ml-1">[Prazo: 2 dias]</span></li>
+                        <li><strong>Analistas Financeiros:</strong> Cadastrar as parcelas a vencer. <span class="font-semibold text-blue-600 ml-1">[Prazo: 2 dias]</span></li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="flex items-center gap-4 text-2xl font-bold text-gray-800 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+                        7. Investimento
+                    </h3>
+                     <h4 class="font-semibold text-green-800 mb-2">Como Deve Ser:</h4>
+                    <p class="mb-6 text-gray-700">Lançamentos feitos no Sankhya pelo Setor de Contratos, CFO e CEO.</p>
+                    <h4 class="font-semibold text-blue-800 mb-3">Ações a Serem Tomadas:</h4>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600">
+                        <li><strong>Vitória, Lucas:</strong> Realizar o lançamento de investimentos no Sankhya. <span class="font-semibold text-blue-600 ml-1">[Prazo: 2 dias]</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chamada Final -->
+        <footer class="text-center mt-20 pt-10 border-t border-gray-200">
+            <p class="text-lg font-semibold text-gray-700">"A Plural Med em busca de uma gestão financeira mais ágil, transparente e estratégica."</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
