@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental de Processos Financeiros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Hide scrollbars of the body */
+        }
+        .node circle {
+            cursor: pointer;
+            stroke-width: 2px;
+        }
+        .node text {
+            font-size: 14px; 
+            font-weight: 700; /* Alterado para negrito */
+            paint-order: stroke;
+            stroke: #fff;
+            stroke-width: 3px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+        }
+        .link {
+            fill: none;
+            stroke: #cbd5e1; /* slate-300 */
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div id="mindmap-container" class="w-screen h-screen">
+         <div class="absolute top-4 left-4 right-4 sm:w-auto sm:right-auto sm:max-w-sm z-10 bg-white p-3 sm:p-4 rounded-lg shadow-lg border border-slate-200">
+            <h1 class="text-lg sm:text-xl font-bold text-slate-900">Reunião Financeiro PluralMed</h1>
+            <p class="text-sm sm:text-base text-slate-600">04/08/2025</p>
+        </div>
+    </div>
+
+    <script type="module">
+        const mindmapData = {
+            "name": "Reunião Financeiro PluralMed",
+            "children": [{
+                "name": "Objetivos da Reunião",
+                "children": [{
+                    "name": "Definir Fluxo"
+                }, {
+                    "name": "Ter DRE Gerencial Automatizada"
+                }, {
+                    "name": "Ter DFC Automatizada"
+                }, {
+                    "name": "Centralizar e Padronizar Dados",
+                    "children": [{
+                        "name": "1 único local para imput de dados"
+                    }, {
+                        "name": "padronização de dados"
+                    }, {
+                        "name": "padronização de cadastros"
+                    }]
+                }, {
+                    "name": "Sair da Reunião com o Fluxo Definido"
+                }]
+            }, {
+                "name": "Dores Atuais (Problemas Identificados)",
+                "children": [{
+                    "name": "DRE e DFC Estáticas (CEO/CFO)"
+                }, {
+                    "name": "Input de Informações em Múltiplos Sistemas/Locais"
+                }, {
+                    "name": "Lançamento de Contratos com Dados Errados (Setor de Contratos)"
+                }, {
+                    "name": "Uso Excessivo de Planilhas"
+                }, {
+                    "name": "Inconsistência de Nomenclaturas (Plano de Contas, Centro de Resultado)"
+                }, {
+                    "name": "Contratos Lançados com Datas Incorretas/Fora da Validade"
+                }, {
+                    "name": "DRE de Competência Não Alimentada Corretamente"
+                }, {
+                    "name": "Duplicação de Receitas na Análise"
+                }, {
+                    "name": "Dados no Sankhya Errados/Não Qualificados"
+                }, {
+                    "name": "Input Manual por Várias Equipes em Diferentes Sistemas"
+                }, {
+                    "name": "Contratos de Despesa de PJ Não Assinados/Fora do Sistema"
+                }, {
+                    "name": "Inconsistência no Faturamento de Contratos (Previsto vs. Executado)"
+                }, {
+                    "name": "Base Fiscal do Sankhya Não Construída/Configurada"
+                }, {
+                    "name": "Risco de Compliance com Contratos Sem Assinatura"
+                }, {
+                    "name": "Cálculo de Imposto em Planilha e Lançamento Manual"
+                }, {
+                    "name": "Plano de Contas de Tarifa Sem Rubrica para Município"
+                }, {
+                    "name": "Despesas Administrativas com Várias Naturezas/Contas"
+                }, {
+                    "name": "Endividamento Desorganizado/Imprevisível (Empréstimos que \"aparecem do nada\")"
+                }, {
+                    "name": "Informação de Pagamento Registrada como \"Visto\" (Não Sistematizado)"
+                }, {
+                    "name": "Divergência entre receita e despesa na classificação de médicos"
+                }]
+            }, {
+                "name": "Requisitos (Necessidades para o Futuro)",
+                "children": [{
+                    "name": "Não Usar Planilhas"
+                }, {
+                    "name": "DRE e DFC Automatizadas"
+                }, {
+                    "name": "1 Único Local para Input de Dados (Sankhya)"
+                }, {
+                    "name": "Padronização de Dados e Cadastros"
+                }, {
+                    "name": "Visão de Exceção Orçamentária dos Contratos"
+                }, {
+                    "name": "Consistência e Qualificação dos Dados"
+                }, {
+                    "name": "Capacidade de Filtragem da DRE (Empresa, Negócio, Município)"
+                }, {
+                    "name": "Plano de Contas Revisado e Atualizado"
+                }, {
+                    "name": "Automatização do Input"
+                }, {
+                    "name": "DRE Gerencial no Sankhya"
+                }, {
+                    "name": "Campo Personalizado para \"Negócio\" no Contrato/Parceiro"
+                }, {
+                    "name": "Centralização de Informações de Sistemas Existentes (Vitus, Sistema Lucas, Sankhya)"
+                }]
+            }, {
+                "name": "Processos Financeiros: Como é Hoje vs. Como Deve Ser",
+                "children": [{
+                    "name": "Contratos",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Setor de Contratos de Receita. ONDE: Sistema próprio Sankhya e Vitus. COMO: Input manual em vários sistemas."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Setor de Contratos de Receita. ONDE: Sankhya. COMO: Input somente no Sankhya."
+                    }]
+                }, {
+                    "name": "Receita",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Daiany, Rosana, IEP, CEPM, analistas. ONDE: Sistema NF municípios. COMO: Recebe do NAC e dos analistas."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Daiany, Rosana, IEP, CEPM, analistas. ONDE: Sankhya. COMO: Continua igual, mas informa no Sankhya."
+                    }]
+                }, {
+                    "name": "Imposto",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Daiany. ONDE: Nota Fiscal + Planilha. COMO: Calcula na planilha e faz uma na nota consolidada."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Daiany. ONDE: Sistema de cálculo de imposto (Lovable). COMO: Sistema de cálculo dos impostos, trimestrais."
+                    }]
+                }, {
+                    "name": "Custo Serviço Prestado",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Compras + RH + Alta Gestão. ONDE: Sankhya. COMO: Fluxo Sankhya de compras, Fluxo de RH, Fluxo ADM, Fluxo de Lanç de Gastos + Fluxo ADM."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Mesma Coisa. ONDE: Sankhya. COMO: Mesma Coisa + Fluxo de Gastos."
+                    }]
+                }, {
+                    "name": "Gastos ADM",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Compras + RH + Analistas Financeiros. ONDE: Fortes, OMIE, Sankhya, planilhas. COMO: Recebe Rls, Folhas, Fluxo Sankhya, E-mail."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Compras + RH + Gerente + Wesley, Oscarina e Herica. ONDE: Sankhya. COMO: Fluxo de Gastos."
+                    }]
+                }, {
+                    "name": "Endividamento",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Previsão do Vitus + cobrança dos bancos, analistas financeiros. ONDE: Vitus, extratos bancários, planilhas de execução. COMO: Lançamento da previsão no Vitus, cobrança dos gerentes bancários."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Setor de Contratos, CFO + CEO. ONDE: Sankhya. COMO: Contratos lança no Sankhya. Financeiro atualiza as parcelas mensais."
+                    }]
+                }, {
+                    "name": "Investimento",
+                    "children": [{
+                        "name": "Como é Hoje: AGENTE: Analistas financeiros. ONDE: Vitus, planilha de execução. COMO: Analistas financeiros lançam a previsão do Vitus."
+                    }, {
+                        "name": "Como Deve Ser: AGENTE: Setor de Contratos, CFO + CEO. ONDE: Sankhya. COMO: Sankhya."
+                    }]
+                }]
+            }, {
+                "name": "Planos de Ação e Responsáveis (com Prazos)",
+                "children": [{
+                    "name": "Contratos",
+                    "children": [{
+                        "name": "Vitória: Acompanhar a entrega de contratos (2 dias)"
+                    }, {
+                        "name": "Lucas (Tecnologia/Dados): Montar visualização no Sankhya (4 dias)"
+                    }, {
+                        "name": "Vitória e Suelly: Cadastrar contratos no Sankhya (2 dias)"
+                    }, {
+                        "name": "Vitória: Lançar investimentos no Sankhya (2 dias)"
+                    }, {
+                        "name": "Setor de Contratos: Revisar e corrigir dados de contratos"
+                    }, {
+                        "name": "Financeiro: Definir pessoa dedicada para acompanhamento"
+                    }]
+                }, {
+                    "name": "Receita",
+                    "children": [{
+                        "name": "Configurar o Sankhya para emissão das notas"
+                    }, {
+                        "name": "Financeiro: Conversar com Contratos sobre contratos sem assinatura"
+                    }]
+                }, {
+                    "name": "Imposto",
+                    "children": [{
+                        "name": "Felipe F e Gisele: Criar o sistema no Lovable (5 dias)"
+                    }]
+                }, {
+                    "name": "Custo Serviço Prestado",
+                    "children": [{
+                        "name": "Lucas, Suelly: Criação do Fluxo de Gastos (3 dias)"
+                    }, {
+                        "name": "Thiago: Auditoria dos Lançamentos Financeiros (3 dias)"
+                    }, {
+                        "name": "Lucas: Atualização do Plano de Contas (Custo e Despesa) (2 dias)"
+                    }, {
+                        "name": "Thiago, Suelly: Alinhamento para receita/despesa de médicos"
+                    }, {
+                        "name": "Setor de TI/Dados: Tratar dados do Vitus para Sankhya"
+                    }]
+                }, {
+                    "name": "Gastos ADM",
+                    "children": [{
+                        "name": "Integrar a folha com o Sankhya"
+                    }, {
+                        "name": "Geovani/Wesley/Núcleo: Definir fluxo de lançamentos de gastos"
+                    }, {
+                        "name": "Lucas/Suelly: Criar campo previsão no Sankhya para gastos anuais (3 dias)"
+                    }, {
+                        "name": "Giovanna, Wesley: Criar painel de visualização"
+                    }, {
+                        "name": "Giovanni: Disseminar novos fluxos (comunicado oficial)"
+                    }, {
+                        "name": "Financeiro: Criar fluxo para chegada da informação de gastos administrativos"
+                    }, {
+                        "name": "Financeiro: Criar previsão dentro do Sankhya para contas de água, energia, internet"
+                    }]
+                }, {
+                    "name": "Endividamento",
+                    "children": [{
+                        "name": "Vitória e Suelly: Cadastrar os contratos no Sankhya (2 dias)"
+                    }, {
+                        "name": "Analistas financeiros: Cadastrar parcelas a vencer (2 dias)"
+                    }, {
+                        "name": "Setor de Contratos/Jurídico: Cadastrar contratos de empréstimos"
+                    }, {
+                        "name": "Financeiro: Atualizar parcelas mensais"
+                    }, {
+                        "name": "Financeiro: Lançar previsão de parcelas até o final do contrato"
+                    }]
+                }, {
+                    "name": "Investimento",
+                    "children": [{
+                        "name": "Vitória e Lucas: Lançamento no Sankhya (2 dias)"
+                    }, {
+                        "name": "Financeiro: Criar previsão (similar a endividamento)"
+                    }]
+                }]
+            }, {
+                "name": "Ferramentas e Sistemas",
+                "children": [{
+                    "name": "Sankhya (Sistema Central para o futuro)"
+                }, {
+                    "name": "Vitus (Será mantido em algumas áreas/migrado)"
+                }, {
+                    "name": "Sistema NF Municípios"
+                }, {
+                    "name": "APP Lovable (A ser criado para impostos)"
+                }, {
+                    "name": "Fortes"
+                }, {
+                    "name": "OMIE"
+                }, {
+                    "name": "Planilhas (A serem eliminadas/substituídas)"
+                }, {
+                    "name": "Sistema do Lucas (Paliativo para contratos, será integrado)"
+                }, {
+                    "name": "GLPI (para solicitação de equipamentos/insumos)"
+                }]
+            }]
+        };
+
+        const container = document.getElementById('mindmap-container');
+        const isMobile = window.innerWidth < 768;
+
+        const margin = { top: 20, right: isMobile ? 20 : 120, bottom: 20, left: isMobile ? 120 : 240 };
+        const width = container.clientWidth - margin.right - margin.left;
+        const height = container.clientHeight - margin.top - margin.bottom;
+
+        const zoomBehavior = d3.zoom().scaleExtent([0.5, 5]).on("zoom", (event) => {
+            g.attr("transform", event.transform);
+        });
+
+        const svgRoot = d3.select(container)
+            .append("svg")
+            .attr("width", container.clientWidth)
+            .attr("height", container.clientHeight)
+            .call(zoomBehavior);
+
+        const g = svgRoot.append("g");
+
+        let i = 0;
+        const duration = 750;
+
+        const treeLayout = d3.tree().size([height, width]);
+
+        let root = d3.hierarchy(mindmapData, d => d.children);
+        root.x0 = height / 2;
+        root.y0 = 0;
+
+        // Collapse after the first level
+        root.children.forEach(collapse);
+        
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+        
+        const getBranchName = (d) => {
+            if (!d.parent) return d.data.name;
+            let ancestor = d;
+            while (ancestor.depth > 1) {
+                ancestor = ancestor.parent;
+            }
+            return ancestor.data.name;
+        };
+        
+        const colorScale = (d) => {
+            if (d.parent === null) return "#1f2937"; // slate-800 for root
+            const branchName = getBranchName(d);
+            
+            if (branchName.includes("Objetivos")) return "#059669";
+            if (branchName.includes("Dores")) return "#dc2626";
+            if (branchName.includes("Requisitos")) return "#2563eb";
+            if (branchName.includes("Processos")) return "#7c3aed";
+            if (branchName.includes("Planos")) return "#d97706";
+            if (branchName.includes("Ferramentas")) return "#475569";
+            return "#64748b"; // fallback
+        };
+        
+        const strokeColorScale = (d) => {
+            if (d.parent === null) return "#0f172a"; 
+            const branchName = getBranchName(d);
+
+            if (branchName.includes("Objetivos")) return "#047857";
+            if (branchName.includes("Dores")) return "#b91c1c";
+            if (branchName.includes("Requisitos")) return "#1d4ed8";
+            if (branchName.includes("Processos")) return "#6d28d9";
+            if (branchName.includes("Planos")) return "#b45309";
+            if (branchName.includes("Ferramentas")) return "#334155";
+            return "#475569"; 
+        };
+
+        update(root);
+
+        function update(source, isExpanding = false) {
+            const treeData = treeLayout(root);
+            const nodes = treeData.descendants();
+            const links = treeData.links(); 
+
+            nodes.forEach(d => { d.y = d.depth * 320 });
+
+            const node = g.selectAll('g.node')
+                .data(nodes, d => d.id || (d.id = ++i));
+
+            const nodeEnter = node.enter().append('g')
+                .attr('class', 'node')
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on('click', handleClick);
+
+            nodeEnter.append('circle')
+                .attr('class', 'node')
+                .attr('r', 1e-6);
+
+            nodeEnter.append('text')
+                .text(d => d.data.name)
+                .attr("dy", "0.31em")
+                .attr("x", d => d.depth === 0 ? -12 : 12)
+                .style("text-anchor", d => d.depth === 0 ? "end" : "start")
+                .style("fill", d => (d.depth > 0) ? "#334155" : "#1f2937");
+
+            const nodeUpdate = nodeEnter.merge(node);
+
+            nodeUpdate.transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            nodeUpdate.select('circle.node')
+                .attr('r', 7)
+                .style("fill", colorScale)
+                .style("stroke", strokeColorScale)
+                .style("stroke-width", d => d._children ? 3 : 2)
+                .attr('cursor', 'pointer');
+
+            const nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            nodeExit.select('circle').attr('r', 1e-6);
+            nodeExit.select('text').style('fill-opacity', 1e-6);
+
+            const link = g.selectAll('path.link')
+                .data(links, d => d.target.id);
+
+            const linkEnter = link.enter().insert('path', "g")
+                .attr("class", "link")
+                .attr('d', d => {
+                    const o = {x: source.x0, y: source.y0};
+                    return d3.linkHorizontal()({source: o, target: o});
+                });
+
+            const linkUpdate = linkEnter.merge(link);
+
+            linkUpdate.transition()
+                .duration(duration)
+                .attr('d', d => d3.linkHorizontal().x(d => d.y).y(d => d.x)(d));
+
+            link.exit().transition()
+                .duration(duration)
+                .attr('d', d => {
+                    const o = {x: source.x, y: source.y};
+                    return d3.linkHorizontal()({source: o, target: o});
+                })
+                .remove();
+
+            nodes.forEach(d => {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+
+            if (isExpanding && source.children && source.children.length > 0) {
+                const yCoords = source.children.map(c => c.x);
+                const xCoord = source.children[0].y;
+                
+                const yMin = Math.min(...yCoords);
+                const yMax = Math.max(...yCoords);
+                
+                const targetX = xCoord;
+                const targetY = (yMin + yMax) / 2;
+                
+                const currentTransform = d3.zoomTransform(svgRoot.node());
+                const scale = currentTransform.k;
+
+                const newX = container.clientWidth / 2 - targetX * scale;
+                const newY = container.clientHeight / 2 - targetY * scale;
+
+                const newTransform = d3.zoomIdentity.translate(newX, newY).scale(scale);
+
+                svgRoot.transition()
+                    .duration(duration)
+                    .call(zoomBehavior.transform, newTransform);
+            }
+        }
+
+        function handleClick(event, d) {
+            const isExpanding = !!d._children;
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d, isExpanding);
+        }
+
+        const yPosition = container.clientHeight / 2; 
+        const initialScale = 0.8;
+        
+        const initialTx = isMobile ? (margin.left + 60) : (margin.left + 80);
+        const initialTy = yPosition - (root.x0 * initialScale) - 50; 
+
+        const initialTransform = d3.zoomIdentity.translate(initialTx, initialTy).scale(initialScale);
+        svgRoot.call(zoomBehavior.transform, initialTransform);
+
+    </script>
+</body>
+</html>
+
