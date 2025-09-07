@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental de Processos Financeiros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Hide scrollbars of the body */
+        }
+        .node circle {
+            cursor: pointer;
+            stroke-width: 2px;
+        }
+        .node text {
+            font-size: 14px; 
+            font-weight: 700; /* Alterado para negrito */
+            paint-order: stroke;
+            stroke: #fff;
+            stroke-width: 3px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+        }
+        .link {
+            fill: none;
+            stroke: #cbd5e1; /* slate-300 */
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div id="mindmap-container" class="w-screen h-screen">
+        <div class="absolute top-4 left-4 z-10 bg-white p-4 rounded-lg shadow-lg border border-slate-200">
+            <h1 class="text-xl font-bold text-slate-900">Mapa Mental: Processos Financeiros</h1>
+            <p class="text-sm text-slate-600">Comparativo: Estado Atual vs. Estado Futuro</p>
+            <div class="mt-4 flex space-x-4">
+                <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-sky-600 mr-2 border-2 border-sky-700"></div>
+                    <span class="text-sm font-semibold">Como é Hoje?</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-emerald-600 mr-2 border-2 border-emerald-700"></div>
+                    <span class="text-sm font-semibold">Como Deve Ser</span>
+                </div>
+                 <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-slate-600 mr-2 border-2 border-slate-700"></div>
+                    <span class="text-sm font-semibold">Processo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // 1. Data Structure
+        const mindmapData = {
+            "name": "Processos Financeiros",
+            "children": [{
+                "name": "Como é Hoje? (Estado Atual)",
+                "children": [{
+                    "name": "Contratos",
+                    "children": [{
+                        "name": "Agente: Setor de Contratos de Receita."
+                    }, {
+                        "name": "Onde: Sistema próprio Sankhya e Vitus."
+                    }, {
+                        "name": "Como: Input manual em vários sistemas."
+                    }]
+                }, {
+                    "name": "Receita",
+                    "children": [{
+                        "name": "Agente: Daiany, Rosana, IEP, CEPM, analistas."
+                    }, {
+                        "name": "Onde: Sistema NF municípios."
+                    }, {
+                        "name": "Como: Recebe do NAC e dos analistas."
+                    }]
+                }, {
+                    "name": "Imposto",
+                    "children": [{
+                        "name": "Agente: Daiany."
+                    }, {
+                        "name": "Onde: Nota Fiscal + Planilha."
+                    }, {
+                        "name": "Como: Calcula na planilha e faz uma na nota consolidada."
+                    }]
+                }, {
+                    "name": "Custo Serviço Prestado",
+                    "children": [{
+                        "name": "Agente: Compras + RH + Alta Gestão."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Fluxo Sankhya de compras, Fluxo de RH, Fluxo ADM, Fluxo de Lançamento de Gastos + Fluxo ADM."
+                    }]
+                }, {
+                    "name": "Gastos ADM",
+                    "children": [{
+                        "name": "Agente: Compras + RH + Analistas Financeiros."
+                    }, {
+                        "name": "Onde: Fortes, OMIE, Sankhya, planilhas."
+                    }, {
+                        "name": "Como: Recebe Rls, Folhas, Fluxo Sankhya, E-mail."
+                    }]
+                }, {
+                    "name": "Endividamento",
+                    "children": [{
+                        "name": "Agente: Previsão do Vitus + cobrança dos bancos, analistas financeiros."
+                    }, {
+                        "name": "Onde: Vitus, extratos bancários, planilhas de execução."
+                    }, {
+                        "name": "Como: Lançamento da previsão no Vitus, cobrança dos gerentes bancários."
+                    }]
+                }, {
+                    "name": "Investimento",
+                    "children": [{
+                        "name": "Agente: Analistas financeiros."
+                    }, {
+                        "name": "Onde: Vitus, planilha de execução."
+                    }, {
+                        "name": "Como: Analistas financeiros lançam a previsão do Vitus."
+                    }]
+                }]
+            }, {
+                "name": "Como Deve Ser (Estado Futuro)",
+                "children": [{
+                    "name": "Contratos",
+                    "children": [{
+                        "name": "Agente: Setor de Contratos de Receita."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Input somente no Sankhya."
+                    }]
+                }, {
+                    "name": "Receita",
+                    "children": [{
+                        "name": "Agente: Daiany, Rosana, IEP, CEPM, analistas."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Continua igual, mas informa no Sankhya."
+                    }]
+                }, {
+                    "name": "Imposto",
+                    "children": [{
+                        "name": "Agente: Daiany."
+                    }, {
+                        "name": "Onde: Sistema de cálculo de imposto."
+                    }, {
+                        "name": "Como: Sistema de cálculo dos impostos, trimestrais."
+                    }]
+                }, {
+                    "name": "Custo Serviço Prestado",
+                    "children": [{
+                        "name": "Agente: Mesma Coisa (Compras + RH + Alta Gestão)."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Mesma Coisa + Fluxo de Gastos."
+                    }]
+                }, {
+                    "name": "Gastos ADM",
+                    "children": [{
+                        "name": "Agente: Compras + RH + Gerente + Wesley, Oscarena e Herica."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Fluxo de Gastos."
+                    }]
+                }, {
+                    "name": "Endividamento",
+                    "children": [{
+                        "name": "Agente: Setor de Contratos, CFO + CEO."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Contratos lançar no Sankhya. Financeiro atualiza as parcelas mensais."
+                    }]
+                }, {
+                    "name": "Investimento",
+                    "children": [{
+                        "name": "Agente: Setor de Contratos, CFO + CEO."
+                    }, {
+                        "name": "Onde: Sankhya."
+                    }, {
+                        "name": "Como: Sankhya."
+                    }]
+                }]
+            }]
+        };
+
+        const container = document.getElementById('mindmap-container');
+        const margin = { top: 20, right: 120, bottom: 20, left: 240 };
+        const width = container.clientWidth - margin.right - margin.left;
+        const height = container.clientHeight - margin.top - margin.bottom;
+
+        const zoomBehavior = d3.zoom().scaleExtent([0.5, 5]).on("zoom", (event) => {
+            g.attr("transform", event.transform);
+        });
+
+        const svgRoot = d3.select(container)
+            .append("svg")
+            .attr("width", container.clientWidth)
+            .attr("height", container.clientHeight)
+            .call(zoomBehavior);
+
+        const g = svgRoot.append("g");
+
+        let i = 0;
+        const duration = 750;
+
+        const treeLayout = d3.tree().size([height, width]);
+
+        let root = d3.hierarchy(mindmapData, d => d.children);
+        root.x0 = height / 2;
+        root.y0 = 0;
+
+        // Collapse after the first level
+        root.children.forEach(collapse);
+        
+        // Collapse the node and all its children
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+        
+        // Color Scale
+        const colorScale = (d) => {
+            if (d.parent === null) return "#1f2937"; // slate-800 for root
+            if (d.parent.data.name === "Processos Financeiros") {
+                 return d.data.name.includes("Hoje") ? "#0284c7" : "#059669"; // sky-600 (darker blue), emerald-600 (darker green)
+            }
+            if (d.parent.parent && d.parent.parent.data.name === "Processos Financeiros") {
+                return "#475569"; // slate-600 for process areas
+            }
+            return "#64748b"; // slate-500 for details
+        };
+        
+        const strokeColorScale = (d) => {
+            if (d.parent === null) return "#0f172a"; 
+            if (d.parent.data.name === "Processos Financeiros") {
+                 return d.data.name.includes("Hoje") ? "#0369a1" : "#047857"; // sky-700 (even darker blue), emerald-700 (even darker green)
+            }
+            if (d.parent.parent && d.parent.parent.data.name === "Processos Financeiros") {
+                return "#334155";
+            }
+            return "#475569"; 
+        };
+
+        update(root);
+
+        function update(source, isExpanding = false) {
+            const treeData = treeLayout(root);
+            const nodes = treeData.descendants();
+            const links = treeData.links(); 
+
+            nodes.forEach(d => { d.y = d.depth * 280 });
+
+            const node = g.selectAll('g.node')
+                .data(nodes, d => d.id || (d.id = ++i));
+
+            const nodeEnter = node.enter().append('g')
+                .attr('class', 'node')
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on('click', handleClick);
+
+            nodeEnter.append('circle')
+                .attr('class', 'node')
+                .attr('r', 1e-6)
+                .style("fill", colorScale);
+
+            nodeEnter.append('text')
+                .text(d => d.data.name)
+                .attr("dy", "0.31em")
+                .attr("x", d => d.children || d._children ? -12 : 12)
+                .style("text-anchor", d => d.children || d._children ? "end" : "start")
+                .style("fill", d => {
+                     if(d.parent && d.parent.data.name === "Processos Financeiros") return colorScale(d);
+                     return "#334155";
+                });
+
+            const nodeUpdate = nodeEnter.merge(node);
+
+            nodeUpdate.transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            nodeUpdate.select('circle.node')
+                .attr('r', 7)
+                .style("fill", colorScale)
+                .style("stroke", strokeColorScale)
+                .style("stroke-width", d => d._children ? 3 : 2)
+                .attr('cursor', 'pointer');
+
+            const nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            nodeExit.select('circle').attr('r', 1e-6);
+            nodeExit.select('text').style('fill-opacity', 1e-6);
+
+            const link = g.selectAll('path.link')
+                .data(links, d => d.target.id);
+
+            const linkEnter = link.enter().insert('path', "g")
+                .attr("class", "link")
+                .attr('d', d => {
+                    const o = {x: source.x0, y: source.y0};
+                    return d3.linkHorizontal()({source: o, target: o});
+                });
+
+            const linkUpdate = linkEnter.merge(link);
+
+            linkUpdate.transition()
+                .duration(duration)
+                .attr('d', d => d3.linkHorizontal().x(d => d.y).y(d => d.x)(d));
+
+            link.exit().transition()
+                .duration(duration)
+                .attr('d', d => {
+                    const o = {x: source.x, y: source.y};
+                    return d3.linkHorizontal()({source: o, target: o});
+                })
+                .remove();
+
+            nodes.forEach(d => {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+
+            if (isExpanding && source.children && source.children.length > 0) {
+                const yCoords = source.children.map(c => c.x);
+                const xCoord = source.children[0].y;
+                
+                const yMin = Math.min(...yCoords);
+                const yMax = Math.max(...yCoords);
+                
+                const targetX = xCoord;
+                const targetY = (yMin + yMax) / 2;
+                
+                const currentTransform = d3.zoomTransform(svgRoot.node());
+                const scale = currentTransform.k;
+
+                const newX = container.clientWidth / 2 - targetX * scale;
+                const newY = container.clientHeight / 2 - targetY * scale;
+
+                const newTransform = d3.zoomIdentity.translate(newX, newY).scale(scale);
+
+                svgRoot.transition()
+                    .duration(duration)
+                    .call(zoomBehavior.transform, newTransform);
+            }
+        }
+
+        function handleClick(event, d) {
+            const isExpanding = !!d._children;
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d, isExpanding);
+        }
+
+        // Position the view on the root node initially
+        const yPosition = 350; // Desired vertical position from the top in pixels
+        const initialScale = 0.9;
+        
+        // Calculate the required translation to place the root node (at y=root.x0) at the desired screen position
+        const initialTx = margin.left; // Root node has a layout-y of 0, so this is straightforward
+        const initialTy = yPosition - (root.x0 * initialScale); //  screenY = ty + (nodeX * scale) => ty = screenY - (nodeX * scale)
+
+        const initialTransform = d3.zoomIdentity.translate(initialTx, initialTy).scale(initialScale);
+        svgRoot.call(zoomBehavior.transform, initialTransform);
+
+    </script>
+</body>
+</html>
+
