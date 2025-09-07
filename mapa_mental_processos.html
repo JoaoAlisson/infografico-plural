@@ -33,28 +33,14 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
     <div id="mindmap-container" class="w-screen h-screen">
-        <div class="absolute top-4 left-4 z-10 bg-white p-4 rounded-lg shadow-lg border border-slate-200">
-            <h1 class="text-xl font-bold text-slate-900">Mapa Mental: Processos Financeiros</h1>
-            <p class="text-sm text-slate-600">Comparativo: Estado Atual vs. Estado Futuro</p>
-            <div class="mt-4 flex space-x-4">
-                <div class="flex items-center">
-                    <div class="w-4 h-4 rounded-full bg-sky-600 mr-2 border-2 border-sky-700"></div>
-                    <span class="text-sm font-semibold">Como é Hoje?</span>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-4 h-4 rounded-full bg-emerald-600 mr-2 border-2 border-emerald-700"></div>
-                    <span class="text-sm font-semibold">Como Deve Ser</span>
-                </div>
-                 <div class="flex items-center">
-                    <div class="w-4 h-4 rounded-full bg-slate-600 mr-2 border-2 border-slate-700"></div>
-                    <span class="text-sm font-semibold">Processo</span>
-                </div>
-            </div>
+         <div class="absolute top-4 left-4 right-4 sm:w-auto sm:right-auto sm:max-w-sm z-10 bg-white p-3 sm:p-4 rounded-lg shadow-lg border border-slate-200">
+            <h1 class="text-lg sm:text-xl font-bold text-slate-900">Reunião Financeiro PluralMed</h1>
+            <p class="text-sm sm:text-base text-slate-600">04/08/2025</p>
+            <h4 class="font-bold">Processos Financeiros</h4>
         </div>
     </div>
 
     <script type="module">
-        // 1. Data Structure
         const mindmapData = {
             "name": "Processos Financeiros",
             "children": [{
@@ -193,7 +179,9 @@
         };
 
         const container = document.getElementById('mindmap-container');
-        const margin = { top: 20, right: 120, bottom: 20, left: 240 };
+        const isMobile = window.innerWidth < 768;
+
+        const margin = { top: 20, right: isMobile ? 20 : 120, bottom: 20, left: isMobile ? 120 : 240 };
         const width = container.clientWidth - margin.right - margin.left;
         const height = container.clientHeight - margin.top - margin.bottom;
 
@@ -221,7 +209,6 @@
         // Collapse after the first level
         root.children.forEach(collapse);
         
-        // Collapse the node and all its children
         function collapse(d) {
             if (d.children) {
                 d._children = d.children;
@@ -230,26 +217,32 @@
             }
         }
         
-        // Color Scale
+        const getBranchName = (d) => {
+            if (!d.parent) return d.data.name;
+            let ancestor = d;
+            while (ancestor.depth > 1) {
+                ancestor = ancestor.parent;
+            }
+            return ancestor.data.name;
+        };
+        
         const colorScale = (d) => {
             if (d.parent === null) return "#1f2937"; // slate-800 for root
-            if (d.parent.data.name === "Processos Financeiros") {
-                 return d.data.name.includes("Hoje") ? "#0284c7" : "#059669"; // sky-600 (darker blue), emerald-600 (darker green)
-            }
-            if (d.parent.parent && d.parent.parent.data.name === "Processos Financeiros") {
-                return "#475569"; // slate-600 for process areas
-            }
-            return "#64748b"; // slate-500 for details
+            const branchName = getBranchName(d);
+            
+            if (branchName.includes("Como é Hoje")) return "#2563eb";
+            if (branchName.includes("Como Deve Ser")) return "#059669";
+            
+            return "#64748b"; // fallback
         };
         
         const strokeColorScale = (d) => {
             if (d.parent === null) return "#0f172a"; 
-            if (d.parent.data.name === "Processos Financeiros") {
-                 return d.data.name.includes("Hoje") ? "#0369a1" : "#047857"; // sky-700 (even darker blue), emerald-700 (even darker green)
-            }
-            if (d.parent.parent && d.parent.parent.data.name === "Processos Financeiros") {
-                return "#334155";
-            }
+            const branchName = getBranchName(d);
+
+            if (branchName.includes("Como é Hoje")) return "#1d4ed8";
+            if (branchName.includes("Como Deve Ser")) return "#047857";
+            
             return "#475569"; 
         };
 
@@ -260,7 +253,7 @@
             const nodes = treeData.descendants();
             const links = treeData.links(); 
 
-            nodes.forEach(d => { d.y = d.depth * 280 });
+            nodes.forEach(d => { d.y = d.depth * 320 });
 
             const node = g.selectAll('g.node')
                 .data(nodes, d => d.id || (d.id = ++i));
@@ -272,18 +265,14 @@
 
             nodeEnter.append('circle')
                 .attr('class', 'node')
-                .attr('r', 1e-6)
-                .style("fill", colorScale);
+                .attr('r', 1e-6);
 
             nodeEnter.append('text')
                 .text(d => d.data.name)
                 .attr("dy", "0.31em")
-                .attr("x", d => d.children || d._children ? -12 : 12)
-                .style("text-anchor", d => d.children || d._children ? "end" : "start")
-                .style("fill", d => {
-                     if(d.parent && d.parent.data.name === "Processos Financeiros") return colorScale(d);
-                     return "#334155";
-                });
+                .attr("x", d => d.depth === 0 ? -12 : 12)
+                .style("text-anchor", d => d.depth === 0 ? "end" : "start")
+                .style("fill", d => (d.depth > 0) ? "#334155" : "#1f2937");
 
             const nodeUpdate = nodeEnter.merge(node);
 
@@ -371,13 +360,11 @@
             update(d, isExpanding);
         }
 
-        // Position the view on the root node initially
-        const yPosition = 350; // Desired vertical position from the top in pixels
-        const initialScale = 0.9;
+        const yPosition = container.clientHeight / 2; 
+        const initialScale = 0.8;
         
-        // Calculate the required translation to place the root node (at y=root.x0) at the desired screen position
-        const initialTx = margin.left; // Root node has a layout-y of 0, so this is straightforward
-        const initialTy = yPosition - (root.x0 * initialScale); //  screenY = ty + (nodeX * scale) => ty = screenY - (nodeX * scale)
+        const initialTx = isMobile ? (margin.left + 60) : (margin.left + 80);
+        const initialTy = yPosition - (root.x0 * initialScale) - 50; 
 
         const initialTransform = d3.zoomIdentity.translate(initialTx, initialTy).scale(initialScale);
         svgRoot.call(zoomBehavior.transform, initialTransform);
